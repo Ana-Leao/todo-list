@@ -1,3 +1,32 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+	@apply font-sans text-base;
+}
+
+.title {
+	@apply text-6xl font-extrabold bg-gradient-to-r from-[#FF79C6] via-[#FFB86C] to-[#BD93F9] text-transparent bg-clip-text animate-gradient;
+}
+
+.container {
+	@apply w-full max-w-5xl mx-auto;
+}
+
+.animate-gradient {
+	background-size: 300%;
+	animation: animatedgradient 6s ease infinite alternate;
+}
+
+@keyframes animatedgradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
