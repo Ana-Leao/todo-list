@@ -10,12 +10,12 @@ export default {
 	// eslint-disable-next-line no-undef
 	plugins: [require("daisyui")],
 	daisyui: {
-		themes: ["pastel", "dracula"],
+		themes: ["pastel", "dracula", "dark", "night"],
 		darkTheme: "dracula",
 		base: true,
 		styled: true,
 		utils: true,
-		prefix: "daisy-",
+		// prefix: "daisy-",
 		logs: true,
 		themeRoot: ":root",
 	},
