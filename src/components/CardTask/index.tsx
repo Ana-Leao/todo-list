@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 const tasks = [
 	{
 		id: 1,
@@ -19,14 +21,41 @@ const tasks = [
 	},
 ];
 
+interface TaskStates {
+	[taskId: number]: boolean;
+}
+
 export function CardTask() {
+	const [taskState, setTaskState] = useState<TaskStates>({});
+
+	function handleCheckboxChange(taskId: number) {
+		setTaskState((prevState) => ({
+			...prevState,
+			[taskId]: !prevState[taskId],
+		}));
+	}
+
 	return (
 		<>
 			{tasks?.map((task) => (
-				<div key={task.id} className='card w-full bg-neutral shadow-md my-3'>
+				<div
+					key={task.id}
+					className={`card w-full ${
+						taskState[task.id]
+							? "opacity-70 border border-primary"
+							: "bg-neutral border-transparent"
+					} shadow-md my-3 border`}
+				>
 					<div className='flex justify-between items-center py-4 px-6'>
 						<div className='flex items-center gap-4'>
-							<input type='checkbox' className='checkbox checkbox-primary' />
+							<input
+								checked={taskState[task.id] || false}
+								// checked={task.isCompleted ? true : false}
+								onChange={() => handleCheckboxChange(task.id)}
+								name={`checkbox-task-${task.id}`}
+								type='checkbox'
+								className='checkbox checkbox-primary'
+							/>
 							<p>{task.description}</p>
 						</div>
 
